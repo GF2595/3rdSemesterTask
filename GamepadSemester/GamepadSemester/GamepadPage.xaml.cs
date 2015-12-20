@@ -55,23 +55,15 @@ namespace GamepadSemester
         {
             Button pressedButton = (Button)sender;
 
-            try
-            {
-                int buttonNumber = 0;
-                int.TryParse(pressedButton.Content.ToString(), out buttonNumber);
+            int buttonNumber = 0;
+            int.TryParse(pressedButton.Content.ToString(), out buttonNumber);
 
-                if (pressedButton.Name == "AdditionalButton")
-                {
-                    buttonNumber += 8;
-                }
-
-                GamepadClient.Send(buttonNumber);
-            }
-            catch (SendingErrorException)
+            if (pressedButton.Name == "AdditionalButton")
             {
-                ErrorBlock.Text = "Sending error. Check receiver settings";
+                buttonNumber += 8;
             }
 
+            ErrorBlock.Text = Mediator.Send(buttonNumber);
         }
 
         public void ChangeButtonsAmount(int amount)

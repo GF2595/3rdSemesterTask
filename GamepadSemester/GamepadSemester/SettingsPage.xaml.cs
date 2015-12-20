@@ -144,15 +144,7 @@ namespace GamepadSemester
 
         private void ConnectionButtonClick(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                GamepadClient.Connect(IPAddressBox.Text, PortBox.Text);
-                StatusBox.Text = "Connection established";
-            }
-            catch (Exception)
-            {
-                StatusBox.Text = "Connect error";
-            }
+            StatusBox.Text = Mediator.SetConnection(IPAddressBox.Text, PortBox.Text);
         }
     }
 }

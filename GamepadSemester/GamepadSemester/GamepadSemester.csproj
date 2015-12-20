@@ -89,7 +89,8 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
-    <Compile Include="Connection.cs" />
+    <Compile Include="Mediator.cs" />
+    <Compile Include="SocketClient.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="GamepadPage.xaml.cs">
       <DependentUpon>GamepadPage.xaml</DependentUpon>

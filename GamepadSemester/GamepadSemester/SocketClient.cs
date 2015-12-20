@@ -16,7 +16,6 @@ namespace GamepadClientNamespace
         static private string serverHostnameString = "";
         static private string serverPort = "";
         static private bool connected = false;
-        static private bool closing = false;
 
         static public async void Connect(string address, string port)
         {
@@ -36,9 +35,8 @@ namespace GamepadClientNamespace
             {                
                 clientSocket.Dispose();
                 clientSocket = null;
-                closing = true;
                 
-                //throw new ConnectionErrorException();
+                throw new ConnectionErrorException();
             }
         }
 
