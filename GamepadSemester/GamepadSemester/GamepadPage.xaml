@@ -40,8 +40,8 @@
             <ColumnDefinition Width="41*"/>
             <ColumnDefinition Width="566*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer HorizontalAlignment="Left" Height="56" Margin="10,334,0,0" VerticalAlignment="Top" Width="587" VerticalScrollMode="Disabled" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled" Grid.ColumnSpan="2">
-            <StackPanel Name="ButtonsPanel" Height="56" Width="0" RenderTransformOrigin="0.5,0.5" Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <ScrollViewer HorizontalAlignment="Left" Height="91" Margin="10,299,0,0" VerticalAlignment="Top" Width="587" VerticalScrollMode="Disabled" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled" Grid.ColumnSpan="2">
+            <StackPanel Name="ButtonsPanel" Height="74" Width="0" RenderTransformOrigin="0.5,0.5" Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <StackPanel.Resources>
                     <ControlTemplate x:Name="ButtonTemplate" x:Key="ButtonControlTemplate" TargetType="Button">
                         <Grid Name="ButtonGrid" Width="55">
