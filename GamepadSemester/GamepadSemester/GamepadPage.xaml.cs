@@ -75,15 +75,20 @@ namespace GamepadSemester
                 TextBlock tempTextBlock = new TextBlock();
                 Button tempButton = new Button();
                 StackPanel tempPanel = new StackPanel();
+
                 tempTextBlock.Text = (i + 1).ToString();
+                tempTextBlock.TextAlignment = TextAlignment.Center;
+                tempTextBlock.Width = tempButton.Width;
+
                 tempButton.Name = "AdditionalButton";
                 tempButton.Template = ButtonTemplate;
                 tempButton.Content = i + 1;
                 tempButton.Click += ButtonPressed;
+
                 tempPanel.Children.Add(tempTextBlock);
                 tempPanel.Children.Add(tempButton);
                 tempPanel.Width = tempButton.Width;
-                tempTextBlock.Width = tempButton.Width;
+
                 ButtonsPanel.Children.Add(tempPanel);
                 ButtonsPanel.Width += tempButton.Width;
             }
