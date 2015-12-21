@@ -45,7 +45,26 @@
                 <StackPanel.Resources>
                     <ControlTemplate x:Name="ButtonTemplate" x:Key="ButtonControlTemplate" TargetType="Button">
                         <Grid Name="ButtonGrid" Width="55">
-                            <Image HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="56" Source="Assets/button.png"/>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="PointerOver" />
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="buttonImage"
+                                                Storyboard.TargetProperty="Height"
+                                                To="54" Duration="0" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusedStates">
+                                    <VisualState x:Name="Unfocused" />
+                                    <VisualState x:Name="PointerFocused" />
+                                    <VisualState x:Name="Focused" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Image x:Name="buttonImage" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="56" Source="Assets/button.png"/>
                         </Grid>
                     </ControlTemplate>
                 </StackPanel.Resources>

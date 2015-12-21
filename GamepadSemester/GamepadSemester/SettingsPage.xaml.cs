@@ -138,7 +138,18 @@ namespace GamepadSemester
 
             if (result)
             {
-                buttonsAmount = amount;
+                if (amount < 0)
+                {
+                    buttonsAmount = 0;
+                }
+                else if (amount > 200)
+                {
+                    buttonsAmount = 200;
+                }
+                else
+                {
+                    buttonsAmount = amount;
+                }                
             }
         }
 
