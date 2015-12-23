@@ -15,7 +15,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using GamepadClientNamespace;
 
 // Документацию по шаблону элемента "Основная страница" см. по адресу http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -28,7 +27,6 @@ namespace GamepadSemester
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-        private int buttonsAmount = 0;
 
         public SettingsPage()
         {
@@ -105,16 +103,9 @@ namespace GamepadSemester
             string currentlyUsedIPAddress = "";
             string currentlyUsedPort = "";
 
-            GamepadClient.getCurrentIPAdressAndPort(out currentlyUsedIPAddress, out currentlyUsedPort);
+            Mediator.getCurrentlyUsedIPAddressAndPort(out currentlyUsedIPAddress, out currentlyUsedPort);
             IPAddressBox.Text = currentlyUsedIPAddress;
             PortBox.Text = currentlyUsedPort;
-
-            try
-            {
-                buttonsAmount = (int)e.Parameter;
-            }
-            catch (InvalidCastException)
-            { }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -126,7 +117,16 @@ namespace GamepadSemester
 
         private void TurnPage(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(GamepadPage), buttonsAmount);
+            Button pressedButton = (Button)e.OriginalSource;
+
+            if (pressedButton.Name == "GamepadPageButton")
+            {
+                Frame.Navigate(typeof(GamepadPage));
+            }
+            else
+            {
+                Frame.Navigate(typeof(AccelerometerPage));
+            }
         }
 
         private void ChangeButtonsAmount(object sender, TextChangedEventArgs e)
@@ -140,15 +140,15 @@ namespace GamepadSemester
             {
                 if (amount < 0)
                 {
-                    buttonsAmount = 0;
+                    Mediator.buttonsAmountHasChanged(0);
                 }
                 else if (amount > 200)
                 {
-                    buttonsAmount = 200;
+                    Mediator.buttonsAmountHasChanged(200);
                 }
                 else
                 {
-                    buttonsAmount = amount;
+                    Mediator.buttonsAmountHasChanged(amount);
                 }                
             }
         }

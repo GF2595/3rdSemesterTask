@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using GamepadClientNamespace;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -36,14 +35,9 @@ namespace GamepadSemester
         /// <param name="e">Данные события, описывающие, каким образом была достигнута эта страница.
         /// Этот параметр обычно используется для настройки страницы.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            try
-            {
-            int buttonsAmount = (int)e.Parameter;
-            ChangeButtonsAmount(buttonsAmount);
-            }
-            catch (InvalidCastException)
-            { }
+        {            
+            ChangeButtonsAmount(Mediator.getButtonsAmount());
+            ErrorBlock.Text = "";
         }
 
         private void TurnPage(object sender, RoutedEventArgs e)

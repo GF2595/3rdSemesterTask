@@ -71,19 +71,19 @@
             </StackPanel>
         </ScrollViewer>
         <Grid x:Name="LeftStick" HorizontalAlignment="Left" Height="155" Margin="72.167,69,0,0" VerticalAlignment="Top" Width="111" Grid.Column="1">
-            <Button Content="1" HorizontalAlignment="Left" Margin="0,-16,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource UpButtonControlTemplate}" RenderTransformOrigin="0.745,0.855"/>
-            <Button Content="2" HorizontalAlignment="Left" Margin="56,41,-54,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource RightButtonControlTemplate}"/>
-            <Button Content="3" HorizontalAlignment="Left" Margin="0,98,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource DownButtonControlTemplate}"/>
-            <Button Content="4" HorizontalAlignment="Left" Margin="-56,41,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource LeftButtonControlTemplate}"/>
+            <Button Content="1" HorizontalAlignment="Left" Margin="0,-16,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource UpButtonControlTemplate}" RenderTransformOrigin="0.745,0.855" ClickMode="Press"/>
+            <Button Content="2" HorizontalAlignment="Left" Margin="56,41,-54,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource RightButtonControlTemplate}" ClickMode="Press"/>
+            <Button Content="3" HorizontalAlignment="Left" Margin="0,98,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource DownButtonControlTemplate}" ClickMode="Press"/>
+            <Button Content="4" HorizontalAlignment="Left" Margin="-56,41,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource LeftButtonControlTemplate}" ClickMode="Press"/>
             <Image HorizontalAlignment="Left" Height="57" Margin="27,41,0,0" VerticalAlignment="Top" Width="61" Source="Assets/d-Pad CENTER.png"/>
         </Grid>
         <Button x:Name="SettingsPageButton" Content="Settings" HorizontalAlignment="Left" Margin="473.167,0,-16.333,0" VerticalAlignment="Top" Click="TurnPage" Grid.Column="1" Template="{StaticResource SettingsButtonControlTemplate}"/>
         <TextBlock x:Name="ErrorBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="261.167,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Grid x:Name="RightStick" HorizontalAlignment="Left" Height="155" Margin="340.167,69,0,0" VerticalAlignment="Top" Width="111" Grid.Column="1">
-            <Button Content="5" HorizontalAlignment="Left" Margin="0,-16,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource UpButtonControlTemplate}" RenderTransformOrigin="0.745,0.855"/>
-            <Button Content="6" HorizontalAlignment="Left" Margin="56,41,-54,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource RightButtonControlTemplate}"/>
-            <Button Content="7" HorizontalAlignment="Left" Margin="0,98,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource DownButtonControlTemplate}"/>
-            <Button Content="8" HorizontalAlignment="Left" Margin="-56,41,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource LeftButtonControlTemplate}"/>
+            <Button Content="5" HorizontalAlignment="Left" Margin="0,-16,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource UpButtonControlTemplate}" RenderTransformOrigin="0.745,0.855" ClickMode="Press"/>
+            <Button Content="6" HorizontalAlignment="Left" Margin="56,41,-54,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource RightButtonControlTemplate}" ClickMode="Press"/>
+            <Button Content="7" HorizontalAlignment="Left" Margin="0,98,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource DownButtonControlTemplate}" ClickMode="Press"/>
+            <Button Content="8" HorizontalAlignment="Left" Margin="-56,41,0,0" VerticalAlignment="Top" Click="ButtonPressed" Template="{StaticResource LeftButtonControlTemplate}" ClickMode="Press"/>
             <Image HorizontalAlignment="Left" Height="57" Margin="27,41,-14,0" VerticalAlignment="Top" Width="98" Source="Assets/d-Pad CENTER.png"/>
         </Grid>
 

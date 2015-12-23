@@ -19,24 +19,34 @@ namespace GamepadClientNamespace
 
         static public void Connect(string address, string port)
         {
-            clientSocket = new StreamSocket();
-
-            try
+            if (!connected)
             {
-                serverHost = new HostName(address);
-                serverPort = port;
-                serverHostnameString = address;
+                clientSocket = new StreamSocket();
 
-                clientSocket.ConnectAsync(serverHost, serverPort);
-                connected = true;
+                try
+                {
+                    serverHost = new HostName(address);
+                    serverPort = port;
+                    serverHostnameString = address;
 
+                    clientSocket.ConnectAsync(serverHost, serverPort);
+                    connected = true;
+                }
+                catch (Exception)
+                {
+                    clientSocket.Dispose();
+                    clientSocket = null;
+
+                    throw new ConnectionErrorException();
+                }
             }
-            catch (Exception)
-            {                
+            else
+            {
                 clientSocket.Dispose();
                 clientSocket = null;
-                
-                throw new ConnectionErrorException();
+                connected = false;
+
+                GamepadClient.Connect(address, port);
             }
         }
 
@@ -61,7 +71,7 @@ namespace GamepadClientNamespace
             }
         }
 
-        static public void getCurrentIPAdressAndPort(out string IPAddress, out string port)
+        static public void getCurrentIPAddressAndPort(out string IPAddress, out string port)
         {
             IPAddress = serverHostnameString;
             port = serverPort;

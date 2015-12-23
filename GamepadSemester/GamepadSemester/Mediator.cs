@@ -7,8 +7,25 @@ using GamepadClientNamespace;
 
 namespace GamepadSemester
 {
-    class Mediator
+    static class Mediator
     {
+        static private int buttonsAmount = 0;
+
+        static public void buttonsAmountHasChanged(int newButtonsAmount)
+        {
+            buttonsAmount = newButtonsAmount;
+        }
+
+        static public int getButtonsAmount()
+        {
+            return buttonsAmount;
+        }
+
+        static public void getCurrentlyUsedIPAddressAndPort(out string ipAddress, out string port)
+        {            
+            GamepadClient.getCurrentIPAddressAndPort(out ipAddress, out port);
+        }
+
         static public string SetConnection(string address, string port)
         {
             try
