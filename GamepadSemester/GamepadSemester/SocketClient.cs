@@ -13,9 +13,10 @@ namespace GamepadClientNamespace
     {
         static private StreamSocket clientSocket;
         static private HostName serverHost;
-        static private string serverHostnameString = "";
-        static private string serverPort = "";
+        static private string serverHostnameString = "192.168.77.1";
+        static private string serverPort = "4444";
         static private bool connected = false;
+        static private DataWriter writer;
 
         static public void Connect(string address, string port)
         {
@@ -28,6 +29,7 @@ namespace GamepadClientNamespace
                     serverHost = new HostName(address);
                     serverPort = port;
                     serverHostnameString = address;
+                    writer = new DataWriter(clientSocket.OutputStream);
 
                     clientSocket.ConnectAsync(serverHost, serverPort);
                     connected = true;
@@ -50,19 +52,14 @@ namespace GamepadClientNamespace
             }
         }
 
-        static public void Send(int number)
+        static public void Send(string record)
         {
             if (connected)
             {
                 try
                 {
-                    DataWriter writer = new DataWriter(clientSocket.OutputStream);
-                    writer.WriteString(number.ToString());
-
+                    writer.WriteString(record);
                     writer.StoreAsync();
-
-                    writer.DetachStream();
-                    writer.Dispose();
                 }
                 catch (Exception)
                 {

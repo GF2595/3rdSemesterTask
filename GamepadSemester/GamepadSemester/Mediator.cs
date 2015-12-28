@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GamepadClientNamespace;
+using Windows.UI.Input;
 
 namespace GamepadSemester
 {
@@ -11,9 +12,27 @@ namespace GamepadSemester
     {
         static private int buttonsAmount = 0;
 
-        static public void buttonsAmountHasChanged(int newButtonsAmount)
+        static public void ButtonsAmountHasChanged(string buttonsAmountString)
         {
-            buttonsAmount = newButtonsAmount;
+            int amount = 0;
+
+            bool result = int.TryParse(buttonsAmountString, out amount);
+
+            if (result)
+            {
+                if (amount < 0)
+                {
+                    buttonsAmount = 0;
+                }
+                else if (amount > 200)
+                {
+                    buttonsAmount = 200;
+                }
+                else
+                {
+                    buttonsAmount = amount;
+                }
+            }
         }
 
         static public int getButtonsAmount()
@@ -39,18 +58,19 @@ namespace GamepadSemester
             }
         }
 
-        static public string Send(int buttonNumber)
+        static public void DPadPressed(PointerPoint point, string dPadName)
         {
-            try
-            {
-                GamepadClient.Send(buttonNumber);
+            GamepadClient.Send(RecordMaker.MakeDPadPressRecord(point, dPadName));
+        }
 
-                return "";
-            }
-            catch (SendingErrorException)
-            {
-                return "Sending error. Check receiver settings";
-            }
+        static public void DPadReleased(string dPadName)
+        {
+            GamepadClient.Send(RecordMaker.MakeDPadReleaseRecord(dPadName));
+        }
+
+        static public void ButtonPressed(int buttonId)
+        {
+            GamepadClient.Send(RecordMaker.MakeButtonPressedRecord(buttonId));
         }
     }
 }

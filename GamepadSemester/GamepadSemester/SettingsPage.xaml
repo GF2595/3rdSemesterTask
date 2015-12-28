@@ -40,6 +40,5 @@
         <TextBox x:Name="ButtonsAmountBox" Header="Buttons amount" HorizontalAlignment="Left" Margin="429,136.833,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" PlaceholderText="0..200" TextChanged="ChangeButtonsAmount"/>
         <Button x:Name="GamepadPageButton" Content="Gamepad" HorizontalAlignment="Left" Margin="514,0,-16,0" VerticalAlignment="Top" Click="TurnPage" Template="{StaticResource GamepadButtonControlTemplate}"/>
         <TextBox x:Name="StatusBox" Header="Connection Status" HorizontalAlignment="Left" Margin="10,136.833,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="364" IsReadOnly="True"/>
-        <Button x:Name="AccelerometerButton" Content="Accelerometer" HorizontalAlignment="Left" Margin="414,83.833,0,0" Grid.Row="1" VerticalAlignment="Top" Width="148" Click="TurnPage"/>
     </Grid>
 </Page>

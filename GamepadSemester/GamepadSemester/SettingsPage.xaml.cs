@@ -117,40 +117,14 @@ namespace GamepadSemester
 
         private void TurnPage(object sender, RoutedEventArgs e)
         {
-            Button pressedButton = (Button)e.OriginalSource;
-
-            if (pressedButton.Name == "GamepadPageButton")
-            {
-                Frame.Navigate(typeof(GamepadPage));
-            }
-            else
-            {
-                Frame.Navigate(typeof(AccelerometerPage));
-            }
+            Frame.Navigate(typeof(GamepadPage));
         }
 
         private void ChangeButtonsAmount(object sender, TextChangedEventArgs e)
         {
             TextBox box = (TextBox)sender;
-            int amount = 0;
 
-            bool result = int.TryParse(box.Text, out amount);
-
-            if (result)
-            {
-                if (amount < 0)
-                {
-                    Mediator.buttonsAmountHasChanged(0);
-                }
-                else if (amount > 200)
-                {
-                    Mediator.buttonsAmountHasChanged(200);
-                }
-                else
-                {
-                    Mediator.buttonsAmountHasChanged(amount);
-                }                
-            }
+            Mediator.ButtonsAmountHasChanged(box.Text);
         }
 
         private void ConnectionButtonClick(object sender, RoutedEventArgs e)

@@ -82,9 +82,6 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccelerometerPage.xaml.cs">
-      <DependentUpon>AccelerometerPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -93,6 +90,7 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Mediator.cs" />
+    <Compile Include="RecordMaker.cs" />
     <Compile Include="SocketClient.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="GamepadPage.xaml.cs">
@@ -111,11 +109,7 @@
   <ItemGroup>
     <Content Include="Assets\backArrow.png" />
     <Content Include="Assets\button.png" />
-    <Content Include="Assets\d-Pad CENTER.png" />
-    <Content Include="Assets\d-Pad DOWN.png" />
-    <Content Include="Assets\d-Pad LEFT.png" />
-    <Content Include="Assets\d-Pad RIGHT.png" />
-    <Content Include="Assets\d-Pad UP.png" />
+    <Content Include="Assets\dPad.png" />
     <Content Include="Assets\joystick.png" />
     <Content Include="Assets\Logo.scale-240.png" />
     <Content Include="Assets\settingsWheel.png" />
@@ -131,10 +125,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AccelerometerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GamepadPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

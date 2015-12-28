@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Input;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -49,15 +50,7 @@ namespace GamepadSemester
         {
             Button pressedButton = (Button)sender;
 
-            int buttonNumber = 0;
-            int.TryParse(pressedButton.Content.ToString(), out buttonNumber);
-
-            if (pressedButton.Name == "AdditionalButton")
-            {
-                buttonNumber += 8;
-            }
-
-            ErrorBlock.Text = Mediator.Send(buttonNumber);
+            Mediator.ButtonPressed((int)pressedButton.Content);
         }
 
         public void ChangeButtonsAmount(int amount)
@@ -86,6 +79,21 @@ namespace GamepadSemester
                 ButtonsPanel.Children.Add(tempPanel);
                 ButtonsPanel.Width += tempButton.Width;
             }
+        }
+
+        private void dPadPressed(object sender, PointerRoutedEventArgs e)
+        {
+            Image dPad = (Image)sender;
+            PointerPoint point = e.GetCurrentPoint(dPad);
+
+            Mediator.DPadPressed(point, dPad.Name);
+        }
+
+        private void dPadReleased(object sender, PointerRoutedEventArgs e)
+        {
+            Image dPad = (Image)sender;
+
+            Mediator.DPadReleased(dPad.Name);
         }
     }
 }
